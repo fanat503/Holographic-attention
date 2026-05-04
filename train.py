@@ -253,3 +253,38 @@ def train_worker(config):
 
             if csv_file is not None:
                 csv_file.close()
+
+MODEL_CONFIG = {
+    "block_size": 512,
+    "vocab_size": 50257,
+    "n_layer": 12,
+    "n_head": 10,
+    "n_embd": 640,
+    "phase_mult": 0.15,   # baseline: 0.0, default holo: 0.05, holo-strong: 0.15
+}
+
+TRAIN_CONFIG = {
+    "train_path": "/train_fixed_tokens.pt",
+    "val_path": "/val_fixed_tokens.pt",
+    "save_dir": "/holo_0.15_run",
+
+    "seed": 42,
+
+    "batch_size_per_device": 4,
+    "eval_batch_size_per_device": 4,
+    "grad_accum": 16,
+
+    "lr": 3e-4,
+    "min_lr": 3e-5,
+    "warmup": 2000,
+    "max_steps": 30000,
+
+    "log_every": 500,
+    "val_batches": 25,
+    "save_every": 5000,
+
+    "min_free_gb_best": 1.0,
+    "min_free_gb_final": 2.0,
+
+    "model": MODEL_CONFIG,
+}
