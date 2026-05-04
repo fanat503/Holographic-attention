@@ -1,5 +1,7 @@
+from accelerate import Accelerator, notebook_launcher, DistributedDataParallelKwargs
 import os
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+
 
 def train_worker(config):
     gc.collect()
