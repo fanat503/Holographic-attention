@@ -2,6 +2,31 @@ from accelerate import Accelerator, notebook_launcher, DistributedDataParallelKw
 import os
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
+import csv
+import json
+import math
+import random
+import time
+import gc
+import shutil
+from contextlib import nullcontext
+
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from accelerate import Accelerator, DistributedDataParallelKwargs
+
+from model import GPT, GPTConfig
+from dataset import get_dataloader
+from tests import (
+    evaluate_induction,
+    measure_attention_entropy,
+    phase_statistics,
+    validation_loss,
+)
+
 
 def train_worker(config):
     gc.collect()
@@ -293,3 +318,9 @@ TRAIN_CONFIG = {
 
     "model": MODEL_CONFIG,
 }
+
+if __name__ == "__main__":
+    for p in [TRAIN_CONFIG["train_path"], TRAIN_CONFIG["val_path"]]:
+        if not os.path.exists(p):
+            raise FileNotFoundError(p)
+    train_worker(TRAIN_CONFIG)
