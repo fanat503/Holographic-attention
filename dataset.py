@@ -1,6 +1,7 @@
 from datasets import load_dataset
 from transformers import GPT2TokenizerFast
 from tqdm import tqdm
+from dataclasses import dataclass
 
 def prepare_sterile_datasets(
     dataset_path="HuggingFaceFW/fineweb-edu",
