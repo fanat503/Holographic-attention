@@ -1,7 +1,10 @@
 from datasets import load_dataset
 from transformers import GPT2TokenizerFast
 from tqdm import tqdm
+
 import os
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+
 import csv
 import json
 import math
