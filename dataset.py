@@ -116,3 +116,34 @@ prepare_sterile_datasets(
     test_tokens_count=20_000_000,
     save_dir="***", # enter your save_dir
 ) 
+
+class FixedDataset(Dataset):
+    def __init__(self, path, seq_len):
+        self.tokens = torch.load(path, mmap=True, weights_only=False)
+        self.seq_len = seq_len
+        self.block = seq_len + 1
+
+        if not isinstance(self.tokens, torch.Tensor):
+            raise TypeError(f"{path} must contain a single torch.Tensor")
+
+        if len(self.tokens) < self.block:
+            raise ValueError(f"{path} is too small for seq_len={seq_len}")
+
+    def __len__(self):
+        return len(self.tokens) // self.block
+
+    def __getitem__(self, idx):
+        start = idx * self.block
+        chunk = self.tokens[start:start + self.block].to(torch.long)
+        return {"input_ids": chunk}
+
+def get_dataloader(path, seq_len, batch_size, drop_last):
+    ds = FixedDataset(path, seq_len)
+    return DataLoader(
+        ds,
+        batch_size=batch_size,
+        shuffle=False,
+        pin_memory=True,
+        drop_last=drop_last,
+        num_workers=0,
+    )
