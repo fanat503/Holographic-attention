@@ -33,3 +33,5 @@ I am a 13 year old independent researcher with a strong interest in Mechanistic 
 This is an early-stage proof of concept, and I am currently looking for:
 - **Mentorship** to help formalize the mathematical framework behind these phase circuits.
 - **Compute Collaborators** to test if these scaling laws hold at the 1B+ parameter scale on A100/H100 clusters.
+
+**Contact:** Open an issue here, DM me on X/Twitter ([@fanat50399337](https://x.com/fanat50399337)), or find me on the MI Discord server
