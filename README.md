@@ -8,7 +8,7 @@ Standard dot-product attention can become noisy when features are compressed in 
 
 I tested this hypothesis on a 100M parameter scale, training for 0.5B tokens on the FineWeb-Edu dataset. The results indicate a notable structural shift in how the model learns:
 
-* **The Induction Crossover:** The phase-modulated model initially tracks the baseline but experiences a much sharper phase transition around Step 5000. Ultimately, it achieves an induction score **2.7x higher** than the matched baseline.
+* **The Induction crossover:** The phase-modulated model initially tracks the baseline but experiences a much sharper phase transition around Step 5000. Ultimately, it achieves an induction score **2.7x higher** than the matched baseline.
 * **Attention Sharpness:** The holographic runs consistently show lower attention entropy, suggesting the formation of more specialized and sparse attention circuits.
 * **Optimization Signal:** The learned `Phase Norm` grew steadily from 0.0 to 4.0, confirming that the optimizer actively relies on the phase mechanism to minimize loss.
 
@@ -24,7 +24,7 @@ We ran controlled A/B/C tests comparing a standard baseline (`phase_mult = 0.0`)
 ## Repository Structure
 - `model.py`: Core model definition (Holographic Causal Self-Attention, SwiGLU, RMSNorm).
 - `train.py`: Distributed training script using Hugging Face `accelerate`.
-- `data_prep.py`: Tokenization and streaming logic for FineWeb-Edu.
+- `dataset.py`: Tokenization and streaming logic for FineWeb-Edu.
 - `logs/`: Raw CSV training logs for all experiments to ensure reproducibility.
 
 ## About the Author & Collaboration
@@ -33,6 +33,3 @@ I am a 13 year old independent researcher with a strong interest in Mechanistic 
 This is an early-stage proof of concept, and I am currently looking for:
 - **Mentorship** to help formalize the mathematical framework behind these phase circuits.
 - **Compute Collaborators** to test if these scaling laws hold at the 1B+ parameter scale on A100/H100 clusters.
-- **MI Researchers** interested in applying tools like activation patching or logit lens to the saved weights.
-
-**Contact:** Please feel free to open an issue, or reach out to me via X/Twitter https://x.com/fanat50399337 or on the MI Discord server.
