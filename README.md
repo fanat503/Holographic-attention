@@ -27,8 +27,7 @@ We ran controlled A/B/C tests comparing a standard baseline (`phase_mult = 0.0`)
 - `dataset.py`: Tokenization and streaming logic for FineWeb-Edu.
 - `logs/`: Raw CSV training logs for all experiments to ensure reproducibility.
 
-## About the Author & Collaboration
-I am a 13 year old independent researcher with a strong interest in Mechanistic Interpretability and transformer internals. 
+## Collaboration
 
 This is an early-stage proof of concept, and I am currently looking for:
 - **Mentorship** to help formalize the mathematical framework behind these phase circuits.
