@@ -6,9 +6,9 @@ Standard dot-product attention can become noisy when features are compressed in 
 
 I tested this on a 100M parameter scale, training for 0.5B tokens on the FineWeb-Edu dataset. The results indicate a notable structural shift in how the model learns:
 
-* **The Induction crossover:** The phase model has a sharp phase transition around Step 5000. Interestingly, it achieves an induction score 2.7x higher than the matched baseline.
-* **Attention Sharpness:** The holographic runs consistently show lower attention entropy.
-* **Optimization Signal:** The learned `Phase Norm` grew from 0.0 to 4.0, so the optimizer really relies on the phase mechanism to minimize loss.
+* The Induction crossover: The phase model has a sharp phase transition around Step 5000. Interestingly, it achieves an induction score 2.7x higher than the matched baseline.
+* Attention Sharpness: The holographic runs consistently show lower attention entropy.
+* Optimization Signal: The learned `Phase Norm` grew from 0.0 to 4.0, so the optimizer really relies on the phase mechanism to minimize loss.
 
 ## Results
 We ran controlled tests comparing a standard baseline (phase_mult = 0.0) with two different variants (0.05 and 0.15 multipliers). 
