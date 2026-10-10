@@ -16,12 +16,12 @@ We ran controlled tests comparing a standard baseline (phase_mult = 0.0) with tw
 | Metric (at step 5k-8k) | Baseline | Holo-Strong (0.15) | Observation |
 | :--- | :--- | :--- | :--- |
 | **Induction Score** | 0.0039 | **0.0106** | Has better circuit formation |
-| **Attention Entropy** | 3.3385 | **3.3011** | Tighter feature packing |
+| **Attention Entropy** | 3.3385 | **3.3011** | Has sharper attention |
 | **Validation Loss** | 3.6167 | **3.6061** | Consistent efficiency gap |
 
 ## Repository Structure
 - `model.py`: Core model definition.
-- `train.py`: Training script`.
+- `train.py`: Training script.
 - `dataset.py`: Tokenization and streaming for FineWeb-Edu dataset.
 - `logs/`: CSV training logs for all experiments.
 
