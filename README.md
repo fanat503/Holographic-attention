@@ -8,7 +8,7 @@ I tested this on a 100M parameter scale, training for 0.5B tokens on the FineWeb
 
 * **The Induction crossover:** The phase model has a sharp phase transition around Step 5000. Interestingly, it achieves an induction score 2.7x higher than the matched baseline.
 * **Attention Sharpness:** The holographic runs consistently show lower attention entropy.
-* **Optimization Signal:** The learned `Phase Norm` grew steadily from 0.0 to 4.0, so the optimizer really relies on the phase mechanism to minimize loss.
+* **Optimization Signal:** The learned `Phase Norm` grew from 0.0 to 4.0, so the optimizer really relies on the phase mechanism to minimize loss.
 
 ## Results
 We ran controlled tests comparing a standard baseline (phase_mult = 0.0) with two different variants (0.05 and 0.15 multipliers). 
@@ -21,8 +21,8 @@ We ran controlled tests comparing a standard baseline (phase_mult = 0.0) with tw
 
 ## Repository Structure
 - `model.py`: Core model definition.
-- `train.py`: Rraining script`.
-- `dataset.py`: Tokenization and streaming for FineWeb-Edu.
-- `logs/`: Raw CSV training logs for all experiments.
+- `train.py`: Training script`.
+- `dataset.py`: Tokenization and streaming for FineWeb-Edu dataset.
+- `logs/`: CSV training logs for all experiments.
 
 **Contact:** DM me on X ([@fanat50399337](https://x.com/fanat50399337)), or find me on the MI Discord server
